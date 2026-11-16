@@ -1,0 +1,38 @@
+[project]
+name = "handmouse"
+version = "2.1.0"
+description = "Control your mouse cursor with hand gestures using a webcam"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9,<3.13"
+dependencies = [
+    "mediapipe==0.10.21",
+    "opencv-python==4.10.0.84",
+    "numpy<2",
+    "pyautogui==0.9.54",
+    "customtkinter==5.2.2",
+    "pillow",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+
+[project.gui-scripts]
+handmouse = "handmouse.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["handmouse*"]
+
+[tool.setuptools.package-data]
+handmouse = ["assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E701", "E702", "E731"]
